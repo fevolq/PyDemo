@@ -1,0 +1,11 @@
+__pycache__/
+venv/
+.idea
+.git
+
+build/
+dist/
+
+*.log
+demo
+demo.py
