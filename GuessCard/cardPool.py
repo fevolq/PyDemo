@@ -7,6 +7,7 @@ import copy
 from typing import List
 
 from card import Card
+from utils import colors
 
 
 class CardPool:
@@ -25,7 +26,7 @@ class CardPool:
         self._last_cards = cards
 
     def show_info(self):
-        print(f'当前标准为：{self._standard_card.attr}，牌池数量：{len(self._cards)}')
+        print(f'当前标准为：{colors.green(self._standard_card.attr)}，牌池数量：{colors.normal_cyan(len(self._cards))}')
 
     def show_cards(self):
         print('最后的牌组：', ', '.join([card.attr for card in self._last_cards]))

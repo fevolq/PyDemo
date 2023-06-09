@@ -10,6 +10,7 @@ from cardPool import CardPool
 from user import User, Action
 from card import Card
 import constant
+from utils import colors
 
 
 class Process:
@@ -87,7 +88,7 @@ class Process:
                 new_round = True
                 if self._card_pool.is_consistent():
                     end = True
-                    print(f'\n结束，{user.name}获胜')
+                    print(f'\n结束，{colors.magenta(user.name)}获胜')
                 else:
                     user.add_cards(self._card_pool.clear_cards())
 
