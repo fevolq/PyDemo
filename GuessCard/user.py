@@ -7,6 +7,7 @@ from typing import List
 
 from card import Card
 import constant
+from utils import colors
 
 
 class User:
@@ -20,7 +21,7 @@ class User:
         return self._name
 
     def show(self):
-        info = f"""当前用户：{self._name}\n剩余卡牌：{', '.join(self.__cards_attr())}"""
+        info = f"""当前用户：{colors.normal_red(self._name)}\n剩余卡牌：{', '.join(self.__cards_attr())}"""
         print(info)
 
     def __cards_attr(self):
