@@ -30,5 +30,21 @@ normal_white = lambda target: colorfy(0, WHITE, target)
 
 
 if __name__ == '__main__':
-    print(red('hello'))
+    print(black('black'))
+    print(red('red'))
+    print(green('green'))
+    print(yellow('yellow'))
+    print(blue('blue'))
+    print(magenta('magenta'))
+    print(cyan('cyan'))
+    print(white('white'))
+
+    print(normal_black('normal_black'))
+    print(normal_red('normal_red'))
+    print(normal_green('normal_green'))
+    print(normal_yellow('normal_yellow'))
+    print(normal_blue('normal_blue'))
+    print(normal_magenta('normal_magenta'))
+    print(normal_cyan('normal_cyan'))
+    print(normal_white('normal_white'))
     pass
