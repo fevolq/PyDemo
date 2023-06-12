@@ -8,6 +8,7 @@ from typing import List
 from cardPool import CardPool
 from card import Card
 import constant
+from utils import colors
 
 
 class User:
@@ -52,11 +53,11 @@ class User:
             self._cards = list(filter(lambda item: item.attr != card.attr, self._cards))
             del self._cards_dict[card.attr]
             self._eliminate_num += 1
-            print(f'消除卡牌：{card.attr}')
-            print(f'余下卡牌：{self.show_cards()}')
+            print(f'消除卡牌：{colors.normal_magenta(card.attr)}')
+            print(f'余下牌组：{self.show_cards()}')
         elif len(self._cards) >= constant.MAX_USER_CARDS:
             self._is_alive = False
-            print('失败')
+            print(colors.normal_red('失败'))
 
     def action(self, card_pool: CardPool) -> int:
         def select(max_number):
@@ -64,15 +65,15 @@ class User:
             try:
                 int(index)
             except:
-                print("请输入正整数：")
+                print(colors.red('请输入正整数：'))
                 return select(max_number)
             if int(index) > max_number or int(index) <= 0:
-                print('请选择正确的数：')
+                print(colors.red('请选择正确的数：'))
                 return select(max_number)
             return int(index)
 
-        print('\n当前用户：', self.name)
-        print('当前卡池：', card_pool.show_cards())
-        print('当前牌组：', self.show_cards())
+        print('\n当前用户：', colors.blue(self.name))
+        print('当前卡池：', colors.white(card_pool.show_cards()))
+        print('当前牌组：', colors.cyan(self.show_cards()))
         card_index = select(len(card_pool.cards)) - 1
         return card_index

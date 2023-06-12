@@ -8,6 +8,7 @@ from typing import List
 from cardPool import CardPool
 from user import User
 import constant
+from utils import colors
 
 
 class Process:
@@ -64,9 +65,10 @@ class Process:
         rank_keys = list(rank_users.keys())
         rank_keys.sort(reverse=True)
         rank = 1
+        print('---------排行---------')
         for key in rank_keys:
-            print(f'\n第{rank}名：{", ".join([user.name for user in rank_users[key]])}，'
-                  f'消除次数：{rank_users[key][0].eliminate_num}')
+            print(f'\n第{colors.red(rank)}名：{", ".join([user.name for user in rank_users[key]])}，'
+                  f'消除次数：{colors.normal_magenta(rank_users[key][0].eliminate_num)}')
             rank += 1
 
     def run(self):
