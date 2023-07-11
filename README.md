@@ -3,3 +3,4 @@
 * game2048: 2048游戏
 * guessCard: 唬牌
 * EliminateGame: 卡牌消除
+* Command: 开启cmd窗口，批量执行命令
