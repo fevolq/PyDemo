@@ -1,0 +1,30 @@
+{
+  "option": {
+    "exe": "cmd",
+    "echo": true
+  },
+  "lines": [
+    {
+      "scripts": "python --version"
+    },
+
+    {
+      "process": 3,
+      "scripts": [
+        "python --version",
+        ["python", "script_demo.py", "-n", "a a"],
+        "python script_demo.py -n 'a a'"
+      ]
+    },
+
+    {
+      "scripts": [
+        ["python", "script_demo.py", "--name", "b b"]
+      ]
+    },
+
+    {
+      "scripts": "python script_demo.py --name='c c'"
+    }
+  ]
+}
