@@ -26,7 +26,7 @@ class Game:
 
         self.hint = False
         self.is_invalid_direction = False       # 方向移动是否有效
-        self.add_new_num(num=2)
+        self.add_new_num(num=2, init=True)
 
     def pretty_print(self):
         """
@@ -67,7 +67,7 @@ class Game:
         new_num = gen_num() if num is None else num
         self.data[i][j] = new_num
 
-        if init:    # 初始化时不再另外展示
+        if not init:    # 初始化时不再另外展示
             print('-' * 10)
             print(f'new: {new_num}')
             self.pretty_print()
@@ -86,8 +86,7 @@ class Game:
             result.append(has_adjacent_equal([self.data[i][j] for i in range(self.row_num)]))
         return not any(result) and all([i for row in self.data for i in row])
 
-    @staticmethod
-    def get_direction():
+    def get_direction(self):
         """从键盘输入获取方向"""
         command = input('输入方向：')
         directions_command = {
@@ -103,6 +102,15 @@ class Game:
                 if value in directions:
                     raise Exception('重复定义命令')
                 directions[value] = k
+
+        # 提示
+        if str(command.lower()) in ('/help', '/h'):
+            print('方位：[键盘命令]\n-------------')
+            print(f'上：{directions_command["up"]}\n'
+                  f'下：{directions_command["down"]}\n'
+                  f'左：{directions_command["left"]}\n'
+                  f'右：{directions_command["right"]}')
+            return self.get_direction()
 
         return directions.get(str(command).lower(), 'down')
 
